@@ -86,26 +86,28 @@ App = {
     for (var i = 1; i <= recordCount; i++) {
       // Fetch the task data from the blockchain
       const record = await App.ethEhrSystem.records(i)
+      const appAccount = App.account
       const recordId = record[0].toNumber()
       const firstName = record[1]
       const lastName = record[2]
-      const recordCompleted = record[3]
       console.log(firstName)
       console.log(lastName)
 
 
+
       // Create the html for the record
       const $newRecordTemplate = $recordTemplate.clone()
-      $newRecordTemplate.find('.recordContent').html(recordsContent)
-        $newRecordTemplate.find('input', firstName, lastName)
-        .prop('recordsContent',recordId)
-        .prop('checked', recordCompleted)
-        //.prop('firstName')
-        //.prop('lastName')
+      $newRecordTemplate.find('.appAccount').html(appAccount)
+      $newRecordTemplate.find('.firstName').html(firstName)
+        $newRecordTemplate.find('input')
+        .prop('firstName', "recordId")
+      $newRecordTemplate.find('.lastName').html(lastName)
+        $newRecordTemplate.find('input')
+        .prop('lastName', "recordId")
         // .on('click', App.toggleCompleted)
 
       // Put the task in the correct list
-      if (recordCompleted) {
+      if (lastName) {
         $('#completedRecordList').append($newRecordTemplate)
       } else {
         $('#recordList').append($newRecordTemplate)
@@ -119,13 +121,13 @@ App = {
   setLoading: (boolean) => {
     App.loading = boolean
     const loader = $('#loader')
-    const recordContent = $('#recordContent')
+    const completed = $('#completed')
     if (boolean) {
       loader.show()
-      recordContent.hide()
+      completed.hide()
     } else {
       loader.hide()
-      recordContent.show()
+      completed.show()
     }
   }
 }
