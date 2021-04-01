@@ -7,7 +7,6 @@ contract EthEhrSystem {
 		uint id;
 		string firstName;
 		string lastName;
-		bool completed;
 
 	}
 
@@ -16,12 +15,12 @@ contract EthEhrSystem {
 	mapping(uint => Record) public records;
 
 	constructor() public {
-		createRecord("Test", "Other Test");
+		createRecord("John", "Smith");
 	}
 
 	function createRecord(string memory _firstName, string memory _lastName) public {
 		recordCount ++;
-		records[recordCount] = Record(recordCount, _firstName, _lastName, false); 
+		records[recordCount] = Record(recordCount, _firstName, _lastName); 
 	}
 
 }

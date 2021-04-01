@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>BlockRec Patient Records System</title>
+    <title>Dapp University | Todo List</title>
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +22,13 @@
         margin-top: 60px;
       }
 
-      #content {
+      #completed {
+        display: none;
+      }
+      #firstName {
+        display: none;
+      }
+      #lastName {
         display: none;
       }
 
@@ -35,7 +41,7 @@
         margin-bottom: 0px;
       }
 
-      #completedRecordList .recordContent {
+      #completedRecordList .completed .firstName .lastName{
         color: grey;
         text-decoration: line-through;
       }
@@ -43,7 +49,7 @@
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://www.dappuniversity.com/free-download" target="_blank">BlockRec Patient Records System</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://www.dappuniversity.com/free-download" target="_blank">Dapp University | Todo List</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
           <small><a class="nav-link" href="#"><span id="account"></span></a></small>
@@ -56,20 +62,22 @@
           <div id="loader" class="text-center">
             <p class="text-center">Loading...</p>
           </div>
-          <div id="recordsContent">
-         <!-- <form onSubmit="App.createTask(); return false;">
-              <input id="newTask" type="text" class="form-control" placeholder="Add task..." required>
+          <div id="content">
+            <form onSubmit="App.createRecord(); return false;">
+              <input id="newRecord" type="text" class="form-control" placeholder="Add record..." required>
               <input type="submit" hidden="">
-            </form> -->
+            </form>
             <ul id="recordList" class="list-unstyled">
               <div class="recordTemplate" class="checkbox" style="display: none">
-                <label>
-                  <input type="checkbox"/>
-                  <span class="recordsContent">Task content goes here...</span>
-                </label>
+                <p>Blockchain Number: </p>
+                <span class="appAccount"></span>
+                <p>First Name: </p>
+                <span class="firstName"></span>
+                <p>Last Name: </p>
+                <span class="lastName"></span><br>
               </div>
             </ul>
-            <ul id="completedRecords" class="list-unstyled">
+            <ul id="completedRecordList" class="list-unstyled">
             </ul>
           </div>
         </main>
