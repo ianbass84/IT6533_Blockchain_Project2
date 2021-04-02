@@ -45,7 +45,6 @@ App = {
   loadAccount: async () => {
     // Set the current blockchain account
     App.account = web3.eth.accounts[0]
-    console.log(App.account)
   },
 
   loadContract: async () => {
@@ -84,7 +83,7 @@ App = {
 
     // Render out each record with a new record template
     for (var i = 1; i <= recordCount; i++) {
-      // Fetch the task data from the blockchain
+      // Fetch the record data from the blockchain
       const record = await App.ethEhrSystem.records(i)
       const appAccount = App.account
       const recordId = record[0].toNumber()
@@ -92,6 +91,7 @@ App = {
       const lastName = record[2]
       console.log(firstName)
       console.log(lastName)
+      console.log(appAccount)
 
 
 
@@ -116,6 +116,16 @@ App = {
       // Show the task
       $newRecordTemplate.show()
     }
+  },
+
+  createRecord: async () => {
+    App.setLoading(true)
+    const firstName = $('#newFirstName').val()
+    const lastName = $('#newLastName').val()
+    console.log(firstName)
+    console.log(lastName)
+    await App.ethEhrSystem.createRecord(firstName, lastName)
+    window.location.reload()
   },
 
   setLoading: (boolean) => {

@@ -28,6 +28,7 @@ contract('EthEhrSystem', (accounts) => {
     assert.equal(recordCount, 2)
     const event = result.logs[0].args
     assert.equal(event.id.toNumber(), 2)
+    console.log(result)
   })
 
 })

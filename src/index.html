@@ -64,17 +64,17 @@
           </div>
           <div id="recordContent">
             <form onSubmit="App.createRecord(); return false;">
-              <input id="newRecord" type="text" class="form-control" placeholder="Add record..." required>
+              <input id="newFirstName" type="text" class="form-control" placeholder="Add first name" required>
+              <input id="newLastName" type="text" class="form-control" placeholder="Add last name." required>
+
               <input type="submit" hidden="">
             </form>
             <ul id="recordList" class="list-unstyled">
               <div class="recordTemplate" class="checkbox" style="display: none">
-                <p>Blockchain Number: </p>
-                <span class="appAccount"></span>
                 <p>First Name: </p>
                 <span class="firstName"></span>
                 <p>Last Name: </p>
-                <span class="lastName"></span><br>
+                <span class="lastName"></span>
               </div>
             </ul>
             <ul id="completedRecordList" class="list-unstyled">
