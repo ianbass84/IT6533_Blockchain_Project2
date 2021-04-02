@@ -14,13 +14,20 @@ contract EthEhrSystem {
 
 	mapping(uint => Record) public records;
 
+	event RecordCreated(
+		uint id,
+		string firstName,
+		string lastName
+	);
+
 	constructor() public {
 		createRecord("John", "Smith");
 	}
 
 	function createRecord(string memory _firstName, string memory _lastName) public {
 		recordCount ++;
-		records[recordCount] = Record(recordCount, _firstName, _lastName); 
+		records[recordCount] = Record(recordCount, _firstName, _lastName);
+		emit RecordCreated(recordCount, _firstName, _lastName);
 	}
 
 }
