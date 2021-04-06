@@ -7,6 +7,7 @@ contract EthEhrSystem {
 		uint id;
 		string firstName;
 		string lastName;
+		string gender;
 
 	}
 
@@ -17,17 +18,18 @@ contract EthEhrSystem {
 	event RecordCreated(
 		uint id,
 		string firstName,
-		string lastName
+		string lastName,
+		string gender
 	);
 
 	constructor() public {
-		createRecord("John", "Smith");
+		createRecord("John", "Smith", "Male");
 	}
 
-	function createRecord(string memory _firstName, string memory _lastName) public {
+	function createRecord(string memory _firstName, string memory _lastName, string memory _gender) public {
 		recordCount ++;
-		records[recordCount] = Record(recordCount, _firstName, _lastName);
-		emit RecordCreated(recordCount, _firstName, _lastName);
+		records[recordCount] = Record(recordCount, _firstName, _lastName, _gender);
+		emit RecordCreated(recordCount, _firstName, _lastName, _gender);
 	}
 
 }

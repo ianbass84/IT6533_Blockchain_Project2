@@ -1,3 +1,5 @@
+const { assert } = require("chai")
+
 const EthEhrSystem = artifacts.require('./EthEhrSystem.sol')
 
 contract('EthEhrSystem', (accounts) => {
@@ -19,11 +21,12 @@ contract('EthEhrSystem', (accounts) => {
     assert.equal(record.id.toNumber(), recordCount.toNumber())
     assert.equal(record.firstName, 'John')
     assert.equal(record.lastName, 'Smith')
+    assert.equal(record.gender, 'Male')
     assert.equal(recordCount.toNumber(), 1)
   })
 
   it('creates records', async () => {
-    const result = await this.ethEhrSystem.createRecord('Tom', 'Jenkins')
+    const result = await this.ethEhrSystem.createRecord('Tom', 'Jenkins', 'Male')
     const recordCount = await this.ethEhrSystem.recordCount()
     assert.equal(recordCount, 2)
     const event = result.logs[0].args

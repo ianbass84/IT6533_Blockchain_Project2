@@ -64,17 +64,24 @@
           </div>
           <div id="recordContent">
             <form onSubmit="App.createRecord(); return false;">
-              <input id="newFirstName" type="text" class="form-control" placeholder="Add first name" required>
-              <input id="newLastName" type="text" class="form-control" placeholder="Add last name." required>
-
+              <input id="newFirstName" type="text" class="form-control" placeholder="Add first name" required><br>
+              <input id="newLastName" type="text" class="form-control" placeholder="Add last name." required><br>
+              <label for="gender">What is your gender?</label><br>
+              <select name="gender" id="newGender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="prefer not to say">Prefer not to say.</option>
+              </select>
               <input type="submit" hidden="">
             </form>
             <ul id="recordList" class="list-unstyled">
               <div class="recordTemplate" class="checkbox" style="display: none">
-                <p>First Name: </p>
+                <p>First Name:</p>
                 <span class="firstName"></span>
                 <p>Last Name: </p>
                 <span class="lastName"></span>
+                <p>Gender:</p>
+                <span class="gender"></span>
               </div>
             </ul>
             <ul id="completedRecordList" class="list-unstyled">

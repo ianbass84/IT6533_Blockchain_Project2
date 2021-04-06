@@ -89,8 +89,10 @@ App = {
       const recordId = record[0].toNumber()
       const firstName = record[1]
       const lastName = record[2]
+      const gender = record[3]
       console.log(firstName)
       console.log(lastName)
+      console.log(gender)
       console.log(appAccount)
 
 
@@ -104,7 +106,10 @@ App = {
       $newRecordTemplate.find('.lastName').html(lastName)
         $newRecordTemplate.find('input')
         .prop('lastName', "recordId")
-        // .on('click', App.toggleCompleted)
+        $newRecordTemplate.find('.gender').html(gender)
+        $newRecordTemplate.find('input')
+        .prop('gender', "recordId")
+        .on('click', App.toggleCompleted)
 
       // Put the task in the correct list
       if (lastName) {
@@ -122,9 +127,11 @@ App = {
     App.setLoading(true)
     const firstName = $('#newFirstName').val()
     const lastName = $('#newLastName').val()
+    const gender = $('#newGender').val()
     console.log(firstName)
     console.log(lastName)
-    await App.ethEhrSystem.createRecord(firstName, lastName)
+    console.log(gender)
+    await App.ethEhrSystem.createRecord(firstName, lastName, gender)
     window.location.reload()
   },
 
