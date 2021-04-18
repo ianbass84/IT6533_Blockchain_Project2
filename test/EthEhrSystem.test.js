@@ -22,11 +22,15 @@ contract('EthEhrSystem', (accounts) => {
     assert.equal(record.firstName, 'John')
     assert.equal(record.lastName, 'Smith')
     assert.equal(record.gender, 'Male')
+    assert.equal(record.encounterType, "ER Visit")
+    assert.equal(record.note, "Test2")
+    assert.equal(record.cpt, "29824")
+    assert.equal(record.dxCode, "S53.145A")
     assert.equal(recordCount.toNumber(), 1)
   })
 
   it('creates records', async () => {
-    const result = await this.ethEhrSystem.createRecord('Tom', 'Jenkins', 'Male')
+    const result = await this.ethEhrSystem.createRecord('Tom', 'Jenkins', 'Male', "ER Visit", "Test2", "29824","S53.145A")
     const recordCount = await this.ethEhrSystem.recordCount()
     assert.equal(recordCount, 2)
     const event = result.logs[0].args

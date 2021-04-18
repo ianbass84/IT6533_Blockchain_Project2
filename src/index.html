@@ -43,7 +43,6 @@
 
       #completedRecordList .completed .firstName .lastName{
         color: grey;
-        text-decoration: line-through;
       }
     </style>
   </head>
@@ -71,7 +70,16 @@
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="prefer not to say">Prefer not to say.</option>
+              </select><br>
+              <label for="encounterType">Encounter Type: </label><br>
+              <select name="encounterType" id="newEncounterType">
+              <option value="New Patient">New Patient</option>
+              <option value="Return Patient">Return Patient</option>
+              <option value="ER Consult">ER Consult</option>
               </select>
+              <input id="newNote" type="textarea" class="form-control" placeholder="Add physician note." required><br>
+              <input id="newCpt" type="text" class="form-control" placeholder="Add CPT." required><br>
+              <input id="newDxCode" type="text" class="form-control" placeholder="Add DX code." required><br>
               <input type="submit" hidden="">
             </form>
             <ul id="recordList" class="list-unstyled">
@@ -82,6 +90,14 @@
                 <span class="lastName"></span>
                 <p>Gender:</p>
                 <span class="gender"></span>
+                <p>Encounter Type: </p>
+                <spain class="encounterType"></spain>
+                <p>Physician Note: </p>
+                <spain class="note"></spain>
+                <p>CPT Code: </p>
+                <spain class="cpt"></spain>
+                <p>DX Code: </p>
+                <span class="dxCode"></span>
               </div>
             </ul>
             <ul id="completedRecordList" class="list-unstyled">

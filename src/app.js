@@ -90,10 +90,20 @@ App = {
       const firstName = record[1]
       const lastName = record[2]
       const gender = record[3]
+      const encounterType = record[4]
+      const note = record[5]
+      const cpt = record[6]
+      const dxCode = record[7]
+      console.log(recordId)
       console.log(firstName)
       console.log(lastName)
       console.log(gender)
+      console.log(encounterType)
+      console.log(note)
+      console.log(cpt)
+      console.log(dxCode)
       console.log(appAccount)
+
 
 
 
@@ -109,6 +119,18 @@ App = {
         $newRecordTemplate.find('.gender').html(gender)
         $newRecordTemplate.find('input')
         .prop('gender', "recordId")
+        $newRecordTemplate.find('.encounterType').html(encounterType)
+        $newRecordTemplate.find('input')
+        .prop('encounterType', "recordId")  
+        $newRecordTemplate.find('.note').html(note)
+        $newRecordTemplate.find('input')
+        .prop('note', "recordId")
+        $newRecordTemplate.find('.cpt').html(cpt)
+        $newRecordTemplate.find('input')
+        .prop('cpt', "recordId")
+        $newRecordTemplate.find('.dxCode').html(dxCode)
+        $newRecordTemplate.find('input')
+        .prop('dxCode', "recordId")
         .on('click', App.toggleCompleted)
 
       // Put the task in the correct list
@@ -128,10 +150,18 @@ App = {
     const firstName = $('#newFirstName').val()
     const lastName = $('#newLastName').val()
     const gender = $('#newGender').val()
+    const encounterType = $('#newEncounterType').val()
+    const note = $('#newNote').val()
+    const cpt = $('#newCpt').val()
+    const dxCode = $('#newDxCode').val()
     console.log(firstName)
     console.log(lastName)
     console.log(gender)
-    await App.ethEhrSystem.createRecord(firstName, lastName, gender)
+    console.log(encounterType)
+    console.log(note)
+    console.log(cpt)
+    console.log(dxCode)
+    await App.ethEhrSystem.createRecord(firstName, lastName, gender, encounterType, note, cpt, dxCode)
     window.location.reload()
   },
 
