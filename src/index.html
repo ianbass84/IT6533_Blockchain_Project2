@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Dapp University | Todo List</title>
+    <title>EthreHealth: A Blockchain EHR Application</title>
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,13 +43,12 @@
 
       #completedRecordList .completed .firstName .lastName{
         color: grey;
-        text-decoration: line-through;
       }
     </style>
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://www.dappuniversity.com/free-download" target="_blank">Dapp University | Todo List</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="" target="_blank">EthreHealth: A Blockchain EHR Application</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
           <small><a class="nav-link" href="#"><span id="account"></span></a></small>
@@ -62,19 +61,43 @@
           <div id="loader" class="text-center">
             <p class="text-center">Loading...</p>
           </div>
-          <div id="content">
+          <div id="recordContent">
             <form onSubmit="App.createRecord(); return false;">
-              <input id="newRecord" type="text" class="form-control" placeholder="Add record..." required>
+              <input id="newFirstName" type="text" class="form-control" placeholder="Add first name" required><br>
+              <input id="newLastName" type="text" class="form-control" placeholder="Add last name." required><br>
+              <label for="gender">What is your gender?</label><br>
+              <select name="gender" id="newGender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="prefer not to say">Prefer not to say.</option>
+              </select><br>
+              <label for="encounterType">Encounter Type: </label><br>
+              <select name="encounterType" id="newEncounterType">
+              <option value="New Patient">New Patient</option>
+              <option value="Return Patient">Return Patient</option>
+              <option value="ER Consult">ER Consult</option>
+              </select>
+              <input id="newNote" type="textarea" class="form-control" placeholder="Add physician note." required><br>
+              <input id="newCpt" type="text" class="form-control" placeholder="Add CPT." required><br>
+              <input id="newDxCode" type="text" class="form-control" placeholder="Add DX code." required><br>
               <input type="submit" hidden="">
             </form>
             <ul id="recordList" class="list-unstyled">
               <div class="recordTemplate" class="checkbox" style="display: none">
-                <p>Blockchain Number: </p>
-                <span class="appAccount"></span>
-                <p>First Name: </p>
+                <p>First Name:</p>
                 <span class="firstName"></span>
                 <p>Last Name: </p>
-                <span class="lastName"></span><br>
+                <span class="lastName"></span>
+                <p>Gender:</p>
+                <span class="gender"></span>
+                <p>Encounter Type: </p>
+                <spain class="encounterType"></spain>
+                <p>Physician Note: </p>
+                <spain class="note"></spain>
+                <p>CPT Code: </p>
+                <spain class="cpt"></spain>
+                <p>DX Code: </p>
+                <span class="dxCode"></span>
               </div>
             </ul>
             <ul id="completedRecordList" class="list-unstyled">
