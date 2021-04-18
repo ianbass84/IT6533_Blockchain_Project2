@@ -45,6 +45,7 @@ App = {
   loadAccount: async () => {
     // Set the current blockchain account
     App.account = web3.eth.accounts[0]
+    console.log(App.account)
   },
 
   loadContract: async () => {
@@ -83,27 +84,20 @@ App = {
 
     // Render out each record with a new record template
     for (var i = 1; i <= recordCount; i++) {
-      // Fetch the record data from the blockchain
+      // Fetch the task data from the blockchain
       const record = await App.ethEhrSystem.records(i)
       const appAccount = App.account
       const recordId = record[0].toNumber()
       const firstName = record[1]
       const lastName = record[2]
-      const gender = record[3]
-      const encounterType = record[4]
-      const note = record[5]
-      const cpt = record[6]
-      const dxCode = record[7]
-      console.log(recordId)
+      const addressed = record[3]
+      const city = recprd[4]
+      const state = recprd[5]
+      const zip = record[6]
+      const phone = record[7]
       console.log(firstName)
       console.log(lastName)
-      console.log(gender)
-      console.log(encounterType)
-      console.log(note)
-      console.log(cpt)
-      console.log(dxCode)
-      console.log(appAccount)
-
+      console.log(addressed)
 
 
 
@@ -116,22 +110,19 @@ App = {
       $newRecordTemplate.find('.lastName').html(lastName)
         $newRecordTemplate.find('input')
         .prop('lastName', "recordId")
-        $newRecordTemplate.find('.gender').html(gender)
+      $newRecordTemplate.find('.addressed').html(addressed)
         $newRecordTemplate.find('input')
-        .prop('gender', "recordId")
-        $newRecordTemplate.find('.encounterType').html(encounterType)
+        .prop('laddressed', "recordId")
+        $newRecordTemplate.find('.city').html(city)
+      $newRecordTemplate.find('input')
+        .prop('city', "recordId")
+      $newRecordTemplate.find('.state').html(state)
         $newRecordTemplate.find('input')
-        .prop('encounterType', "recordId")  
-        $newRecordTemplate.find('.note').html(note)
+        .prop('state', "recordId")
+      $newRecordTemplate.find('.phone').html(phone)
         $newRecordTemplate.find('input')
-        .prop('note', "recordId")
-        $newRecordTemplate.find('.cpt').html(cpt)
-        $newRecordTemplate.find('input')
-        .prop('cpt', "recordId")
-        $newRecordTemplate.find('.dxCode').html(dxCode)
-        $newRecordTemplate.find('input')
-        .prop('dxCode', "recordId")
-        .on('click', App.toggleCompleted)
+        .prop('phone', "recordId")
+        // .on('click', App.toggleCompleted)
 
       // Put the task in the correct list
       if (lastName) {
@@ -143,26 +134,6 @@ App = {
       // Show the task
       $newRecordTemplate.show()
     }
-  },
-
-  createRecord: async () => {
-    App.setLoading(true)
-    const firstName = $('#newFirstName').val()
-    const lastName = $('#newLastName').val()
-    const gender = $('#newGender').val()
-    const encounterType = $('#newEncounterType').val()
-    const note = $('#newNote').val()
-    const cpt = $('#newCpt').val()
-    const dxCode = $('#newDxCode').val()
-    console.log(firstName)
-    console.log(lastName)
-    console.log(gender)
-    console.log(encounterType)
-    console.log(note)
-    console.log(cpt)
-    console.log(dxCode)
-    await App.ethEhrSystem.createRecord(firstName, lastName, gender, encounterType, note, cpt, dxCode)
-    window.location.reload()
   },
 
   setLoading: (boolean) => {

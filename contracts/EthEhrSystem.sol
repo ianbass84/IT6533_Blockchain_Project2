@@ -7,36 +7,26 @@ contract EthEhrSystem {
 		uint id;
 		string firstName;
 		string lastName;
-		string gender;
-		string encounterType;
-		string note;
-		string cpt;
-		string dxCode;
+		string addressed;
+		string city;
+		string state;
+		string zip;
+		string phone;
+		
+
 	}
 
 
 
 	mapping(uint => Record) public records;
 
-	event RecordCreated(
-		uint id,
-		string firstName,
-		string lastName,
-		string gender,
-		string encounterType,
-		string note,
-		string cpt,
-		string dxCode
-	);
-
 	constructor() public {
-		createRecord("John", "Smith", "Male","ER Visit","Test2", "29824","S53.145A");
+		createRecord("John", "Smith", "123 green street", "smithville", "Ga", "123456", "1234567890");
 	}
 
-	function createRecord(string memory _firstName, string memory _lastName, string memory _gender, string memory _encounterType, string memory _note, string memory _cpt, string memory _dxCode) public {
+	function createRecord(string memory _firstName, string memory _lastName, string memory _addressed, string memory _city, string memory _state, string memory _zip, string memory _phone) public {
 		recordCount ++;
-		records[recordCount] = Record(recordCount, _firstName, _lastName, _gender, _encounterType, _note, _cpt, _dxCode);
-		emit RecordCreated(recordCount, _firstName, _lastName, _gender, _encounterType, _note, _cpt, _dxCode);
+		records[recordCount] = Record(recordCount, _firstName, _lastName, _addressed, _city, _state, _zip, _phone); 
 	}
 
 }
